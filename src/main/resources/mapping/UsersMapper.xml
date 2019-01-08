@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.purs.mapper.UsersMapper">
-  <resultMap id="BaseResultMap" type="com.purs.pojo.Users">
+<mapper namespace="com.purchase.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.purchase.entity.Users">
     <id column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="submit" jdbcType="BIT" property="submit" />
