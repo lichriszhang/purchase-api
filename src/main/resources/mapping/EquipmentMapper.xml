@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.purchase.mapper.EquipmentMapper">
+  <resultMap id="BaseResultMap" type="com.purchase.entity.Equipment">
+    <id column="equipid" jdbcType="VARCHAR" property="equipid" />
+    <result column="equipname" jdbcType="VARCHAR" property="equipname" />
+    <result column="equipspec" jdbcType="VARCHAR" property="equipspec" />
+    <result column="equipmodel" jdbcType="VARCHAR" property="equipmodel" />
+    <result column="equiptext" jdbcType="VARCHAR" property="equiptext" />
+    <result column="equipnum" jdbcType="INTEGER" property="equipnum" />
+    <result column="equipcategory" jdbcType="VARCHAR" property="equipcategory" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    equipid, equipname, equipspec, equipmodel, equiptext, equipnum, equipcategory
+  </sql>
+  <select id="selectByExample" parameterType="com.purchase.entity.EquipmentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from equipment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from equipment
+    where equipid = #{equipid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from equipment
+    where equipid = #{equipid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.purchase.entity.EquipmentExample">
+    delete from equipment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.purchase.entity.Equipment">
+    insert into equipment (equipid, equipname, equipspec, 
+      equipmodel, equiptext, equipnum, 
+      equipcategory)
+    values (#{equipid,jdbcType=VARCHAR}, #{equipname,jdbcType=VARCHAR}, #{equipspec,jdbcType=VARCHAR}, 
+      #{equipmodel,jdbcType=VARCHAR}, #{equiptext,jdbcType=VARCHAR}, #{equipnum,jdbcType=INTEGER}, 
+      #{equipcategory,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.purchase.entity.Equipment">
+    insert into equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="equipid != null">
+        equipid,
+      </if>
+      <if test="equipname != null">
+        equipname,
+      </if>
+      <if test="equipspec != null">
+        equipspec,
+      </if>
+      <if test="equipmodel != null">
+        equipmodel,
+      </if>
+      <if test="equiptext != null">
+        equiptext,
+      </if>
+      <if test="equipnum != null">
+        equipnum,
+      </if>
+      <if test="equipcategory != null">
+        equipcategory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="equipid != null">
+        #{equipid,jdbcType=VARCHAR},
+      </if>
+      <if test="equipname != null">
+        #{equipname,jdbcType=VARCHAR},
+      </if>
+      <if test="equipspec != null">
+        #{equipspec,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmodel != null">
+        #{equipmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="equiptext != null">
+        #{equiptext,jdbcType=VARCHAR},
+      </if>
+      <if test="equipnum != null">
+        #{equipnum,jdbcType=INTEGER},
+      </if>
+      <if test="equipcategory != null">
+        #{equipcategory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.purchase.entity.EquipmentExample" resultType="java.lang.Long">
+    select count(*) from equipment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update equipment
+    <set>
+      <if test="record.equipid != null">
+        equipid = #{record.equipid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipname != null">
+        equipname = #{record.equipname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipspec != null">
+        equipspec = #{record.equipspec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipmodel != null">
+        equipmodel = #{record.equipmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equiptext != null">
+        equiptext = #{record.equiptext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipnum != null">
+        equipnum = #{record.equipnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.equipcategory != null">
+        equipcategory = #{record.equipcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update equipment
+    set equipid = #{record.equipid,jdbcType=VARCHAR},
+      equipname = #{record.equipname,jdbcType=VARCHAR},
+      equipspec = #{record.equipspec,jdbcType=VARCHAR},
+      equipmodel = #{record.equipmodel,jdbcType=VARCHAR},
+      equiptext = #{record.equiptext,jdbcType=VARCHAR},
+      equipnum = #{record.equipnum,jdbcType=INTEGER},
+      equipcategory = #{record.equipcategory,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.purchase.entity.Equipment">
+    update equipment
+    <set>
+      <if test="equipname != null">
+        equipname = #{equipname,jdbcType=VARCHAR},
+      </if>
+      <if test="equipspec != null">
+        equipspec = #{equipspec,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmodel != null">
+        equipmodel = #{equipmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="equiptext != null">
+        equiptext = #{equiptext,jdbcType=VARCHAR},
+      </if>
+      <if test="equipnum != null">
+        equipnum = #{equipnum,jdbcType=INTEGER},
+      </if>
+      <if test="equipcategory != null">
+        equipcategory = #{equipcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where equipid = #{equipid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.purchase.entity.Equipment">
+    update equipment
+    set equipname = #{equipname,jdbcType=VARCHAR},
+      equipspec = #{equipspec,jdbcType=VARCHAR},
+      equipmodel = #{equipmodel,jdbcType=VARCHAR},
+      equiptext = #{equiptext,jdbcType=VARCHAR},
+      equipnum = #{equipnum,jdbcType=INTEGER},
+      equipcategory = #{equipcategory,jdbcType=VARCHAR}
+    where equipid = #{equipid,jdbcType=VARCHAR}
+  </update>
+</mapper>

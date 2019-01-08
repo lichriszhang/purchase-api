@@ -9,10 +9,6 @@ public class Users {
 
     private String roles;
 
-    private Integer orgid;
-
-    private String name;
-
     public String getUsername() {
         return username;
     }
@@ -43,21 +39,5 @@ public class Users {
 
     public void setRoles(String roles) {
         this.roles = roles == null ? null : roles.trim();
-    }
-
-    public Integer getOrgid() {
-        return orgid;
-    }
-
-    public void setOrgid(Integer orgid) {
-        this.orgid = orgid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
     }
 }
