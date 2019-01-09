@@ -20,6 +20,8 @@ public interface SupplierMapper {
 
     List<Supplier> selectByExample(SupplierExample example);
 
+    List<Supplier> selectAll();
+    
     Supplier selectByPrimaryKey(String supplierid);
 
     int updateByExampleSelective(@Param("record") Supplier record, @Param("example") SupplierExample example);

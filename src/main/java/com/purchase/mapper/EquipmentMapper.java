@@ -19,6 +19,8 @@ public interface EquipmentMapper {
     int insertSelective(Equipment record);
 
     List<Equipment> selectByExample(EquipmentExample example);
+    
+    List<Equipment> selectAll();
 
     Equipment selectByPrimaryKey(String equipid);
 
