@@ -11,4 +11,5 @@ public interface UsersService {
 	
 	boolean insertUser(Users user);
 	
+	boolean updateUser(Users user);
 }
