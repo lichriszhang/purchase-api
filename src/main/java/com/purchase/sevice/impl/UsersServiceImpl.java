@@ -46,4 +46,15 @@ public class UsersServiceImpl implements UsersService {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean deleteUser(String username) {
+		try {
+			userMapper.deleteByPrimaryKey(username);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
