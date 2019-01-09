@@ -17,6 +17,8 @@ public interface OrdersMapper {
     int insert(Orders record);
 
     int insertSelective(Orders record);
+    
+    List<Orders> selectAll();
 
     List<Orders> selectByExample(OrdersExample example);
 
