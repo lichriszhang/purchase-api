@@ -19,7 +19,7 @@ public class UsersServiceImpl implements UsersService {
 	public List<Users> getAllUsers() {
 		return userMapper.selectAll();
 	}
-	
+
 	@Override
 	public Users getUserById(String username) {
 		return userMapper.selectByPrimaryKey(username);
@@ -29,6 +29,28 @@ public class UsersServiceImpl implements UsersService {
 	public boolean insertUser(Users user) {
 		try {
 			userMapper.insert(user);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateUser(Users user) {
+		try {
+			userMapper.updateByPrimaryKey(user);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteUser(String username) {
+		try {
+			userMapper.deleteByPrimaryKey(username);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
