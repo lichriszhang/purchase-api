@@ -45,4 +45,8 @@ public class UserController {
 		return userService.updateUser(user);
 	}
 
+	@PostMapping("/vali")
+	public boolean validate(@RequestParam(value="username") String username, @RequestParam(value="password") String password) {
+		return userService.validate(username, password);
+	}
 }

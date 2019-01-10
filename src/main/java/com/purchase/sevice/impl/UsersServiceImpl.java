@@ -57,4 +57,13 @@ public class UsersServiceImpl implements UsersService {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean validate(String username, String password) {
+		Users user = userMapper.selectByPrimaryKey(username);
+		if(user.getPassword().trim().equals(password)) {
+			return true;
+		}
+		return false;
+	}
 }
