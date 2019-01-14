@@ -49,4 +49,9 @@ public class UserController {
 	public boolean validate(@RequestParam(value="username") String username, @RequestParam(value="password") String password) {
 		return userService.validate(username, password);
 	}
+	
+	@PostMapping("/role")
+	public List<Users> getUserByRole(@RequestParam(value="role") String role) {
+		return userService.getUserByRole(role);
+	}
 }

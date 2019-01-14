@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.purchase.entity.Users;
+import com.purchase.entity.UsersExample;
+import com.purchase.entity.UsersExample.Criteria;
 import com.purchase.mapper.UsersMapper;
 import com.purchase.sevice.UsersService;
 
@@ -65,5 +67,13 @@ public class UsersServiceImpl implements UsersService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<Users> getUserByRole(String role) {
+		UsersExample example = new UsersExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andRolesEqualTo(role);
+		return userMapper.selectByExample(example);
 	}
 }

@@ -16,4 +16,6 @@ public interface UsersService {
 	boolean deleteUser(String username);
 	
 	boolean validate(String username, String password);
+	
+	List<Users> getUserByRole(String role);
 }
