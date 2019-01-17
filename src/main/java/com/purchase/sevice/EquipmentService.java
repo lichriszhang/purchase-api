@@ -15,4 +15,6 @@ public interface EquipmentService {
 	
 	boolean updateEquip(Equipment equipment);
 	
+	List<Equipment> getEquipByCate(String cateId);
+	
 }

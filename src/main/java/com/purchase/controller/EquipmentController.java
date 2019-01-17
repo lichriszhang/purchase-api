@@ -44,4 +44,9 @@ public class EquipmentController {
 	public boolean updateEquipment(Equipment equipment) {
 		return equipService.updateEquip(equipment);
 	}
+	@GetMapping("/category/{cid}")
+	public List<Equipment> getEquipByCate(@PathVariable(value="cid") String cateId) {
+		return equipService.getEquipByCate(cateId);
+	}
+	
 }
