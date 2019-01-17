@@ -16,28 +16,31 @@ import com.purchase.sevice.EquipmentService;
 @RestController
 @RequestMapping("/equip")
 public class EquipmentController {
-	
+
 	@Autowired
 	private EquipmentService equipService;
-	
+
 	@GetMapping("/all")
 	public List<Equipment> getAllEquip() {
 		return equipService.getAllEquipment();
 	}
+
 	@GetMapping("/{eid}")
-	public Equipment getEquipmentById(@PathVariable(value="eid") String equipId) {
+	public Equipment getEquipmentById(@PathVariable(value = "eid") String equipId) {
 		return equipService.getEquipById(equipId);
 	}
-	
+
 	@PostMapping("/add")
 	public boolean addEquipment(Equipment equipment) {
 		return equipService.addEquip(equipment);
 	}
+
 	@PostMapping("/delete")
-	public boolean deleteEquipment(@RequestParam(name="eid") String equipId) {
+	public boolean deleteEquipment(@RequestParam(name = "eid") String equipId) {
 		return equipService.deleteEquipById(equipId);
 	}
-	@PostMapping("/update") 
+
+	@PostMapping("/update")
 	public boolean updateEquipment(Equipment equipment) {
 		return equipService.updateEquip(equipment);
 	}
