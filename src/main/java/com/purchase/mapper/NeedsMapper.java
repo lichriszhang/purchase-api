@@ -22,8 +22,6 @@ public interface NeedsMapper {
 
     List<Needs> selectByExample(NeedsExample example);
     
-    List<Needs> selectAll();
-
     Needs selectByPrimaryKey(String needsid);
 
     int updateByExampleSelective(@Param("record") Needs record, @Param("example") NeedsExample example);
