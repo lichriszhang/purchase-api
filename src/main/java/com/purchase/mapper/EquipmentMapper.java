@@ -21,7 +21,7 @@ public interface EquipmentMapper {
     List<Equipment> selectByExample(EquipmentExample example);
     
     List<Equipment> selectAll();
-
+    
     Equipment selectByPrimaryKey(String equipid);
 
     int updateByExampleSelective(@Param("record") Equipment record, @Param("example") EquipmentExample example);
