@@ -17,6 +17,8 @@ public interface NeedsMapper {
     int insert(Needs record);
 
     int insertSelective(Needs record);
+    
+    List<Needs> selectAll();
 
     List<Needs> selectByExample(NeedsExample example);
     
