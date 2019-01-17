@@ -20,7 +20,7 @@ public class SupplierController {
 	@Autowired
 	private SupplierService supplierService;
 	
-	@GetMapping("/allsupplier")
+	@GetMapping("/all")
 	public List<Supplier> getAllSupplier() {
 		return supplierService.getAllSupplier();
 	}
