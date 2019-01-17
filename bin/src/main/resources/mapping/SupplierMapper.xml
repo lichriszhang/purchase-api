@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.purchase.mapper.SupplierMapper">
+  <resultMap id="BaseResultMap" type="com.purchase.entity.Supplier">
+    <id column="supplierid" jdbcType="VARCHAR" property="supplierid" />
+    <result column="suppliername" jdbcType="VARCHAR" property="suppliername" />
+    <result column="supplieradd" jdbcType="VARCHAR" property="supplieradd" />
+    <result column="suppliercontacter" jdbcType="VARCHAR" property="suppliercontacter" />
+    <result column="suppliertele" jdbcType="VARCHAR" property="suppliertele" />
+    <result column="supplierphone" jdbcType="VARCHAR" property="supplierphone" />
+    <result column="supplierfax" jdbcType="VARCHAR" property="supplierfax" />
+    <result column="suppliermail" jdbcType="VARCHAR" property="suppliermail" />
+    <result column="supplierzipcode" jdbcType="VARCHAR" property="supplierzipcode" />
+    <result column="supplierbankaccount" jdbcType="VARCHAR" property="supplierbankaccount" />
+    <result column="supplierequipcategory" jdbcType="VARCHAR" property="supplierequipcategory" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    supplierid, suppliername, supplieradd, suppliercontacter, suppliertele, supplierphone, 
+    supplierfax, suppliermail, supplierzipcode, supplierbankaccount, supplierequipcategory
+  </sql>
+  <select id="selectByExample" parameterType="com.purchase.entity.SupplierExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from supplier
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from supplier
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.purchase.entity.SupplierExample">
+    delete from supplier
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.purchase.entity.Supplier">
+    insert into supplier (supplierid, suppliername, supplieradd, 
+      suppliercontacter, suppliertele, supplierphone, 
+      supplierfax, suppliermail, supplierzipcode, 
+      supplierbankaccount, supplierequipcategory
+      )
+    values (#{supplierid,jdbcType=VARCHAR}, #{suppliername,jdbcType=VARCHAR}, #{supplieradd,jdbcType=VARCHAR}, 
+      #{suppliercontacter,jdbcType=VARCHAR}, #{suppliertele,jdbcType=VARCHAR}, #{supplierphone,jdbcType=VARCHAR}, 
+      #{supplierfax,jdbcType=VARCHAR}, #{suppliermail,jdbcType=VARCHAR}, #{supplierzipcode,jdbcType=VARCHAR}, 
+      #{supplierbankaccount,jdbcType=VARCHAR}, #{supplierequipcategory,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.purchase.entity.Supplier">
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierid != null">
+        supplierid,
+      </if>
+      <if test="suppliername != null">
+        suppliername,
+      </if>
+      <if test="supplieradd != null">
+        supplieradd,
+      </if>
+      <if test="suppliercontacter != null">
+        suppliercontacter,
+      </if>
+      <if test="suppliertele != null">
+        suppliertele,
+      </if>
+      <if test="supplierphone != null">
+        supplierphone,
+      </if>
+      <if test="supplierfax != null">
+        supplierfax,
+      </if>
+      <if test="suppliermail != null">
+        suppliermail,
+      </if>
+      <if test="supplierzipcode != null">
+        supplierzipcode,
+      </if>
+      <if test="supplierbankaccount != null">
+        supplierbankaccount,
+      </if>
+      <if test="supplierequipcategory != null">
+        supplierequipcategory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierid != null">
+        #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieradd != null">
+        #{supplieradd,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliercontacter != null">
+        #{suppliercontacter,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliertele != null">
+        #{suppliertele,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierphone != null">
+        #{supplierphone,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierfax != null">
+        #{supplierfax,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliermail != null">
+        #{suppliermail,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierzipcode != null">
+        #{supplierzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierbankaccount != null">
+        #{supplierbankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierequipcategory != null">
+        #{supplierequipcategory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.purchase.entity.SupplierExample" resultType="java.lang.Long">
+    select count(*) from supplier
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update supplier
+    <set>
+      <if test="record.supplierid != null">
+        supplierid = #{record.supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.suppliername != null">
+        suppliername = #{record.suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplieradd != null">
+        supplieradd = #{record.supplieradd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.suppliercontacter != null">
+        suppliercontacter = #{record.suppliercontacter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.suppliertele != null">
+        suppliertele = #{record.suppliertele,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplierphone != null">
+        supplierphone = #{record.supplierphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplierfax != null">
+        supplierfax = #{record.supplierfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.suppliermail != null">
+        suppliermail = #{record.suppliermail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplierzipcode != null">
+        supplierzipcode = #{record.supplierzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplierbankaccount != null">
+        supplierbankaccount = #{record.supplierbankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplierequipcategory != null">
+        supplierequipcategory = #{record.supplierequipcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update supplier
+    set supplierid = #{record.supplierid,jdbcType=VARCHAR},
+      suppliername = #{record.suppliername,jdbcType=VARCHAR},
+      supplieradd = #{record.supplieradd,jdbcType=VARCHAR},
+      suppliercontacter = #{record.suppliercontacter,jdbcType=VARCHAR},
+      suppliertele = #{record.suppliertele,jdbcType=VARCHAR},
+      supplierphone = #{record.supplierphone,jdbcType=VARCHAR},
+      supplierfax = #{record.supplierfax,jdbcType=VARCHAR},
+      suppliermail = #{record.suppliermail,jdbcType=VARCHAR},
+      supplierzipcode = #{record.supplierzipcode,jdbcType=VARCHAR},
+      supplierbankaccount = #{record.supplierbankaccount,jdbcType=VARCHAR},
+      supplierequipcategory = #{record.supplierequipcategory,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.purchase.entity.Supplier">
+    update supplier
+    <set>
+      <if test="suppliername != null">
+        suppliername = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieradd != null">
+        supplieradd = #{supplieradd,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliercontacter != null">
+        suppliercontacter = #{suppliercontacter,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliertele != null">
+        suppliertele = #{suppliertele,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierphone != null">
+        supplierphone = #{supplierphone,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierfax != null">
+        supplierfax = #{supplierfax,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliermail != null">
+        suppliermail = #{suppliermail,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierzipcode != null">
+        supplierzipcode = #{supplierzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierbankaccount != null">
+        supplierbankaccount = #{supplierbankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierequipcategory != null">
+        supplierequipcategory = #{supplierequipcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.purchase.entity.Supplier">
+    update supplier
+    set suppliername = #{suppliername,jdbcType=VARCHAR},
+      supplieradd = #{supplieradd,jdbcType=VARCHAR},
+      suppliercontacter = #{suppliercontacter,jdbcType=VARCHAR},
+      suppliertele = #{suppliertele,jdbcType=VARCHAR},
+      supplierphone = #{supplierphone,jdbcType=VARCHAR},
+      supplierfax = #{supplierfax,jdbcType=VARCHAR},
+      suppliermail = #{suppliermail,jdbcType=VARCHAR},
+      supplierzipcode = #{supplierzipcode,jdbcType=VARCHAR},
+      supplierbankaccount = #{supplierbankaccount,jdbcType=VARCHAR},
+      supplierequipcategory = #{supplierequipcategory,jdbcType=VARCHAR}
+    where supplierid = #{supplierid,jdbcType=VARCHAR}
+  </update>
+</mapper>

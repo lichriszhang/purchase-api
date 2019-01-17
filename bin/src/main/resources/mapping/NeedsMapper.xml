@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.purchase.mapper.NeedsMapper">
+  <resultMap id="BaseResultMap" type="com.purchase.entity.Needs">
+    <id column="needsid" jdbcType="VARCHAR" property="needsid" />
+    <result column="orgname" jdbcType="VARCHAR" property="orgname" />
+    <result column="submitdate" jdbcType="TIMESTAMP" property="submitdate" />
+    <result column="submiter" jdbcType="VARCHAR" property="submiter" />
+    <result column="orgprincipal" jdbcType="VARCHAR" property="orgprincipal" />
+    <result column="equipid" jdbcType="VARCHAR" property="equipid" />
+    <result column="equipnum" jdbcType="INTEGER" property="equipnum" />
+    <result column="equipstate" jdbcType="VARCHAR" property="equipstate" />
+    <result column="ispass" jdbcType="INTEGER" property="ispass" />
+    <result column="supplier" jdbcType="VARCHAR" property="supplier" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    needsid, orgname, submitdate, submiter, orgprincipal, equipid, equipnum, equipstate, 
+    ispass, supplier
+  </sql>
+  <select id="selectByExample" parameterType="com.purchase.entity.NeedsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from needs
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from needs
+    where needsid = #{needsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from needs
+    where needsid = #{needsid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.purchase.entity.NeedsExample">
+    delete from needs
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.purchase.entity.Needs">
+    insert into needs (needsid, orgname, submitdate, 
+      submiter, orgprincipal, equipid, 
+      equipnum, equipstate, ispass, 
+      supplier)
+    values (#{needsid,jdbcType=VARCHAR}, #{orgname,jdbcType=VARCHAR}, #{submitdate,jdbcType=TIMESTAMP}, 
+      #{submiter,jdbcType=VARCHAR}, #{orgprincipal,jdbcType=VARCHAR}, #{equipid,jdbcType=VARCHAR}, 
+      #{equipnum,jdbcType=INTEGER}, #{equipstate,jdbcType=VARCHAR}, #{ispass,jdbcType=INTEGER}, 
+      #{supplier,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.purchase.entity.Needs">
+    insert into needs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="needsid != null">
+        needsid,
+      </if>
+      <if test="orgname != null">
+        orgname,
+      </if>
+      <if test="submitdate != null">
+        submitdate,
+      </if>
+      <if test="submiter != null">
+        submiter,
+      </if>
+      <if test="orgprincipal != null">
+        orgprincipal,
+      </if>
+      <if test="equipid != null">
+        equipid,
+      </if>
+      <if test="equipnum != null">
+        equipnum,
+      </if>
+      <if test="equipstate != null">
+        equipstate,
+      </if>
+      <if test="ispass != null">
+        ispass,
+      </if>
+      <if test="supplier != null">
+        supplier,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="needsid != null">
+        #{needsid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null">
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="submitdate != null">
+        #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submiter != null">
+        #{submiter,jdbcType=VARCHAR},
+      </if>
+      <if test="orgprincipal != null">
+        #{orgprincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="equipid != null">
+        #{equipid,jdbcType=VARCHAR},
+      </if>
+      <if test="equipnum != null">
+        #{equipnum,jdbcType=INTEGER},
+      </if>
+      <if test="equipstate != null">
+        #{equipstate,jdbcType=VARCHAR},
+      </if>
+      <if test="ispass != null">
+        #{ispass,jdbcType=INTEGER},
+      </if>
+      <if test="supplier != null">
+        #{supplier,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.purchase.entity.NeedsExample" resultType="java.lang.Long">
+    select count(*) from needs
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update needs
+    <set>
+      <if test="record.needsid != null">
+        needsid = #{record.needsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgname != null">
+        orgname = #{record.orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.submitdate != null">
+        submitdate = #{record.submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.submiter != null">
+        submiter = #{record.submiter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgprincipal != null">
+        orgprincipal = #{record.orgprincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipid != null">
+        equipid = #{record.equipid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipnum != null">
+        equipnum = #{record.equipnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.equipstate != null">
+        equipstate = #{record.equipstate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ispass != null">
+        ispass = #{record.ispass,jdbcType=INTEGER},
+      </if>
+      <if test="record.supplier != null">
+        supplier = #{record.supplier,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update needs
+    set needsid = #{record.needsid,jdbcType=VARCHAR},
+      orgname = #{record.orgname,jdbcType=VARCHAR},
+      submitdate = #{record.submitdate,jdbcType=TIMESTAMP},
+      submiter = #{record.submiter,jdbcType=VARCHAR},
+      orgprincipal = #{record.orgprincipal,jdbcType=VARCHAR},
+      equipid = #{record.equipid,jdbcType=VARCHAR},
+      equipnum = #{record.equipnum,jdbcType=INTEGER},
+      equipstate = #{record.equipstate,jdbcType=VARCHAR},
+      ispass = #{record.ispass,jdbcType=INTEGER},
+      supplier = #{record.supplier,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.purchase.entity.Needs">
+    update needs
+    <set>
+      <if test="orgname != null">
+        orgname = #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="submitdate != null">
+        submitdate = #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submiter != null">
+        submiter = #{submiter,jdbcType=VARCHAR},
+      </if>
+      <if test="orgprincipal != null">
+        orgprincipal = #{orgprincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="equipid != null">
+        equipid = #{equipid,jdbcType=VARCHAR},
+      </if>
+      <if test="equipnum != null">
+        equipnum = #{equipnum,jdbcType=INTEGER},
+      </if>
+      <if test="equipstate != null">
+        equipstate = #{equipstate,jdbcType=VARCHAR},
+      </if>
+      <if test="ispass != null">
+        ispass = #{ispass,jdbcType=INTEGER},
+      </if>
+      <if test="supplier != null">
+        supplier = #{supplier,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where needsid = #{needsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.purchase.entity.Needs">
+    update needs
+    set orgname = #{orgname,jdbcType=VARCHAR},
+      submitdate = #{submitdate,jdbcType=TIMESTAMP},
+      submiter = #{submiter,jdbcType=VARCHAR},
+      orgprincipal = #{orgprincipal,jdbcType=VARCHAR},
+      equipid = #{equipid,jdbcType=VARCHAR},
+      equipnum = #{equipnum,jdbcType=INTEGER},
+      equipstate = #{equipstate,jdbcType=VARCHAR},
+      ispass = #{ispass,jdbcType=INTEGER},
+      supplier = #{supplier,jdbcType=VARCHAR}
+    where needsid = #{needsid,jdbcType=VARCHAR}
+  </update>
+</mapper>
