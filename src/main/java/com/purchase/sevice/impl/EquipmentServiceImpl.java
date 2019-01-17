@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.purchase.entity.Equipment;
+import com.purchase.entity.EquipmentExample;
+import com.purchase.entity.EquipmentExample.Criteria;
 import com.purchase.mapper.EquipmentMapper;
 import com.purchase.sevice.EquipmentService;
 
@@ -53,5 +55,15 @@ public class EquipmentServiceImpl implements EquipmentService {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	
+
+	@Override
+	public List<Equipment> getEquipByCate(String cateId) {
+		EquipmentExample example = new EquipmentExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andEquipcategoryEqualTo(cateId);
+		return equipMapper.selectByExample(example);
 	}
 }
