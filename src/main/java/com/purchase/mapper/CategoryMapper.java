@@ -19,6 +19,8 @@ public interface CategoryMapper {
     int insertSelective(Category record);
 
     List<Category> selectByExample(CategoryExample example);
+    
+    List<Category> selectAll();
 
     Category selectByPrimaryKey(String equipcategory);
 

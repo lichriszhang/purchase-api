@@ -5,6 +5,17 @@ import java.util.List;
 import com.purchase.entity.Users;
 public interface UsersService {
 
-	public List<Users> getAllUsers();
+	List<Users> getAllUsers();
+
+	Users getUserById(String username);
 	
+	boolean insertUser(Users user);
+	
+	boolean updateUser(Users user);
+	
+	boolean deleteUser(String username);
+	
+	boolean validate(String username, String password);
+	
+	List<Users> getUserByRole(String role);
 }
