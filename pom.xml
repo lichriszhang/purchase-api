@@ -106,11 +106,11 @@
           <artifactId>activation</artifactId>
           <version>1.1.1</version>
         </dependency>
-        <!-- <dependency>
+        <dependency>
               <groupId>org.flywaydb</groupId>
               <artifactId>flyway-core</artifactId>
               <version>5.1.1</version>
-        </dependency> -->
+        </dependency>
         <dependency>
 		    <groupId>org.apache.httpcomponents</groupId>
 		    <artifactId>httpclient</artifactId>
@@ -142,6 +142,11 @@
                 <configuration>
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.1.1</version>
             </plugin>
         </plugins>
     </build>
