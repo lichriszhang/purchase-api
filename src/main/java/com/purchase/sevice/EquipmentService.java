@@ -17,4 +17,6 @@ public interface EquipmentService {
 	
 	List<Equipment> getEquipByCate(String cateId);
 	
+	List<Equipment> getEquipByName(String equipName);
+	
 }
