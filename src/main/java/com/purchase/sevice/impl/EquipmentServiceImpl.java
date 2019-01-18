@@ -66,4 +66,11 @@ public class EquipmentServiceImpl implements EquipmentService {
 		criteria.andEquipcategoryEqualTo(cateId);
 		return equipMapper.selectByExample(example);
 	}
+	@Override
+	public List<Equipment> getEquipByName(String equipName) {
+		EquipmentExample example = new EquipmentExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andEquipnameLike("%" + equipName + "%");
+		return equipMapper.selectByExample(example);
+	}
 }

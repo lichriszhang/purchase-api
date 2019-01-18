@@ -48,5 +48,8 @@ public class EquipmentController {
 	public List<Equipment> getEquipByCate(@PathVariable(value="cid") String cateId) {
 		return equipService.getEquipByCate(cateId);
 	}
-	
+	@GetMapping("/name/{equipName}")
+	public List<Equipment> getEquipByName(@PathVariable(value="equipName") String equipName) {
+		return equipService.getEquipByName(equipName);
+	}
 }
