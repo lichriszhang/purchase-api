@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2019-01-17 07:32:59
+Date: 2019-01-17 20:55:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,35 +75,35 @@ CREATE TABLE `equipment` (
   `equipnum` int(11) DEFAULT NULL COMMENT '设备数量',
   `equipcategory` varchar(255) DEFAULT NULL COMMENT '设备类别',
   PRIMARY KEY (`equipid`),
-  KEY `a` (`equipcategory`),
-  CONSTRAINT `a` FOREIGN KEY (`equipcategory`) REFERENCES `category` (`equipcategoryname`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `111` (`equipcategory`),
+  CONSTRAINT `111` FOREIGN KEY (`equipcategory`) REFERENCES `category` (`equipcategory`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of equipment
 -- ----------------------------
-INSERT INTO `equipment` VALUES ('213bd96f', '尚品宅配 榻榻米床定制 日式衣柜榻榻米 多功能储物收纳床 全屋家具定制 预付订金（非商品价格）', '100.0kg', 'C23833', '实木颗粒板', '23', '家居');
-INSERT INTO `equipment` VALUES ('25ba2ef0', '得力(deli) 多功能精密维修电子螺丝批组套33件螺丝刀套装 DL1033D', '商品毛重：250.00g', 'DL1033D', '铬钒钢', '288', '工具类');
-INSERT INTO `equipment` VALUES ('3221493c', '韦德之道6', '高帮', '16514436440', '缓震胶,合成革', '2432', '鞋靴');
-INSERT INTO `equipment` VALUES ('3b8fd88b', '计算机', '40cm', 'x007', '合成材料', '50', 'IT设备类');
-INSERT INTO `equipment` VALUES ('3b8vsdvs', '螺丝刀', '10cm', 'x001', '金属', '10', '工具类');
-INSERT INTO `equipment` VALUES ('461e2966', '1/6哈达威Penny便士 NBA珍藏人偶兵人手办', '高度：12寸', '4897020280194', '含磁铁的1：6斯伯丁篮球 x1 - 附有尺码标签的NBA官方奥兰多', '3000', '文娱类');
-INSERT INTO `equipment` VALUES ('46e6f165', '暴雪Blizzard 守望先锋源氏D.Va猎空雕像手办守望周边源氏dva猎空手办模型暴雪官方授权 D.Va', '商品毛重：3.0kg', '1446006', '', '23', '文娱类');
-INSERT INTO `equipment` VALUES ('4a94786c', '金庸作品集套装', '包装：平装  开本：32开', '11263578', '胶版纸', '2424', '图书');
-INSERT INTO `equipment` VALUES ('53f98d61', '数显游标卡尺高精度 150mm电子数显卡尺', '测量方式 其它 测量距离 150mm 工作环境 安装工程；木工工程；水电工程；油漆工程；采购主材；隐蔽泥工工程；其它', 'SL01-22', '塑料碳纤维', '789', '工具类');
-INSERT INTO `equipment` VALUES ('55980d17', '9件套加长型球头内六角扳手', '商品毛重：400.00g', 'S033-1G', '其它', '212', '工具类');
-INSERT INTO `equipment` VALUES ('5a185a32', '家用室内磁控静音健身车自行车运动健身器材', '飞轮重量 6-8KG 阻力档位 8档 传动方式 皮带', 'G1LBLD-300', '碳纤维', '22', '运动器材');
-INSERT INTO `equipment` VALUES ('83e0ed27', '海尔E900T2S', '895*520*620', 'CXW-200-E900T2S', '钢化玻璃', '5278', '家用电器');
-INSERT INTO `equipment` VALUES ('9be74c9f', '四大名著 红楼梦 三国演义 水浒传 西游记', '开本：32开', '11095900', '胶版纸', '1423', '图书');
-INSERT INTO `equipment` VALUES ('bcc4f984', '手持式激光测距仪 红外线距离测量仪 量房仪电子尺', '测量方式 激光 测量距离 70米 工作环境 其它；隐蔽泥工工程；安装工程；木工工程；水电工程；采购主材', 'HT-307', '塑料外壳', '234', '工具类');
-INSERT INTO `equipment` VALUES ('be96c95b', '钳子', '10cm', 'x006', '金属', '20', '工具类');
-INSERT INTO `equipment` VALUES ('d15c650f', '电钻工具箱 工具套装 大型工具组套', '组套件数 128件套 表面处理 电镀防锈 产品净重(kg) 8', 'P14006A', '铬钒钢 碳钢', '324', '工具类');
-INSERT INTO `equipment` VALUES ('d9af641a', '美的WBL25B36 多功能榨汁机商', '电源规格 额定电压 220v 额定频率 50hz 额定功率 200-500W', 'WBL25B36', '塑料', '323', '家用电器');
-INSERT INTO `equipment` VALUES ('ddsvddvd', '计量器', '30cm', 'x005', '合成材料', '19', '器具类');
-INSERT INTO `equipment` VALUES ('e39b0dcb', '耐克 NIKE LEBRON XVI EP 詹姆斯 男子篮球运动鞋 BQ5970 BQ5970-900多色/金属银/冷灰 44', '商品毛重：1.0kg', 'BQ5970', '橡胶', '2000', '鞋靴');
-INSERT INTO `equipment` VALUES ('ec78f45d', '飞利浦75PUF6393/T3', '1682*331*1031（mm）', '75PUF6393/T3', '金属底座', '600', '家用电器');
-INSERT INTO `equipment` VALUES ('sdadfsfs', '电钻', '50cm', 'x003', '合金', '5', 'IT设备类');
-INSERT INTO `equipment` VALUES ('vasfagsd', '扳手', '20cm', 'x002', '金属', '15', '工具类');
+INSERT INTO `equipment` VALUES ('213bd96f', '尚品宅配 榻榻米床定制 日式衣柜榻榻米 多功能储物收纳床 全屋家具定制 预付订金（非商品价格）', '100.0kg', 'C23833', '实木颗粒板', '23', '11');
+INSERT INTO `equipment` VALUES ('25ba2ef0', '得力(deli) 多功能精密维修电子螺丝批组套33件螺丝刀套装 DL1033D', '商品毛重：250.00g', 'DL1033D', '铬钒钢', '288', '01');
+INSERT INTO `equipment` VALUES ('3221493c', '韦德之道6', '高帮', '16514436440', '缓震胶,合成革', '2432', '14');
+INSERT INTO `equipment` VALUES ('3b8fd88b', '计算机', '40cm', 'x007', '合成材料', '50', '03');
+INSERT INTO `equipment` VALUES ('3b8vsdvs', '螺丝刀', '10cm', 'x001', '金属', '10', '01');
+INSERT INTO `equipment` VALUES ('461e2966', '1/6哈达威Penny便士 NBA珍藏人偶兵人手办', '高度：12寸', '4897020280194', '含磁铁的1：6斯伯丁篮球 x1 - 附有尺码标签的NBA官方奥兰多', '3000', '12');
+INSERT INTO `equipment` VALUES ('46e6f165', '暴雪Blizzard 守望先锋源氏D.Va猎空雕像手办守望周边源氏dva猎空手办模型暴雪官方授权 D.Va', '商品毛重：3.0kg', '1446006', '', '23', '12');
+INSERT INTO `equipment` VALUES ('4a94786c', '金庸作品集套装', '包装：平装  开本：32开', '11263578', '胶版纸', '2424', '10');
+INSERT INTO `equipment` VALUES ('53f98d61', '数显游标卡尺高精度 150mm电子数显卡尺', '测量方式 其它 测量距离 150mm 工作环境 安装工程；木工工程；水电工程；油漆工程；采购主材；隐蔽泥工工程；其它', 'SL01-22', '塑料碳纤维', '789', '01');
+INSERT INTO `equipment` VALUES ('55980d17', '9件套加长型球头内六角扳手', '商品毛重：400.00g', 'S033-1G', '其它', '212', '01');
+INSERT INTO `equipment` VALUES ('5a185a32', '家用室内磁控静音健身车自行车运动健身器材', '飞轮重量 6-8KG 阻力档位 8档 传动方式 皮带', 'G1LBLD-300', '碳纤维', '22', '15');
+INSERT INTO `equipment` VALUES ('83e0ed27', '海尔E900T2S', '895*520*620', 'CXW-200-E900T2S', '钢化玻璃', '5278', '05');
+INSERT INTO `equipment` VALUES ('9be74c9f', '四大名著 红楼梦 三国演义 水浒传 西游记', '开本：32开', '11095900', '胶版纸', '1423', '10');
+INSERT INTO `equipment` VALUES ('bcc4f984', '手持式激光测距仪 红外线距离测量仪 量房仪电子尺', '测量方式 激光 测量距离 70米 工作环境 其它；隐蔽泥工工程；安装工程；木工工程；水电工程；采购主材', 'HT-307', '塑料外壳', '234', '01');
+INSERT INTO `equipment` VALUES ('be96c95b', '钳子', '10cm', 'x006', '金属', '20', '01');
+INSERT INTO `equipment` VALUES ('d15c650f', '电钻工具箱 工具套装 大型工具组套', '组套件数 128件套 表面处理 电镀防锈 产品净重(kg) 8', 'P14006A', '铬钒钢 碳钢', '324', '01');
+INSERT INTO `equipment` VALUES ('d9af641a', '美的WBL25B36 多功能榨汁机商', '电源规格 额定电压 220v 额定频率 50hz 额定功率 200-500W', 'WBL25B36', '塑料', '323', '05');
+INSERT INTO `equipment` VALUES ('ddsvddvd', '计量器', '30cm', 'x005', '合成材料', '19', '04');
+INSERT INTO `equipment` VALUES ('e39b0dcb', '耐克 NIKE LEBRON XVI EP 詹姆斯 男子篮球运动鞋 BQ5970 BQ5970-900多色/金属银/冷灰 44', '商品毛重：1.0kg', 'BQ5970', '橡胶', '2000', '14');
+INSERT INTO `equipment` VALUES ('ec78f45d', '飞利浦75PUF6393/T3', '1682*331*1031（mm）', '75PUF6393/T3', '金属底座', '600', '05');
+INSERT INTO `equipment` VALUES ('sdadfsfs', '电钻', '50cm', 'x003', '合金', '5', '03');
+INSERT INTO `equipment` VALUES ('vasfagsd', '扳手', '20cm', 'x002', '金属', '15', '01');
 
 -- ----------------------------
 -- Table structure for needs
@@ -162,6 +162,7 @@ CREATE TABLE `orders` (
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
+INSERT INTO `orders` VALUES ('111', '001供应商', '11', '2019-01-17 20:49:05', '2019-01-17 20:49:08', '111');
 
 -- ----------------------------
 -- Table structure for supplier
