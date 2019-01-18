@@ -14,7 +14,7 @@ import com.purchase.entity.Equipment;
 import com.purchase.sevice.EquipmentService;
 
 @RestController
-@RequestMapping("/equip")
+@RequestMapping(value="/equip", produces = "application/json;charset=UTF-8")
 public class EquipmentController {
 
 	@Autowired

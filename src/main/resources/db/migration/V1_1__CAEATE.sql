@@ -1,15 +1,12 @@
 /*
 Navicat MySQL Data Transfer
-
 Source Server         : mysql
 Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : purchasesys
-
 Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
-
 Date: 2019-01-17 20:55:43
 */
 
@@ -105,6 +102,37 @@ INSERT INTO `equipment` VALUES ('ec78f45d', '飞利浦75PUF6393/T3', '1682*331*1
 INSERT INTO `equipment` VALUES ('sdadfsfs', '电钻', '50cm', 'x003', '合金', '5', '03');
 INSERT INTO `equipment` VALUES ('vasfagsd', '扳手', '20cm', 'x002', '金属', '15', '01');
 
+
+-- ----------------------------
+-- Table structure for supplier
+-- ----------------------------
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE `supplier` (
+  `supplierid` varchar(30) NOT NULL,
+  `suppliername` varchar(255) DEFAULT NULL,
+  `supplieradd` varchar(255) DEFAULT NULL COMMENT '地址',
+  `suppliercontacter` varchar(255) DEFAULT NULL COMMENT '联系人',
+  `suppliertele` varchar(255) DEFAULT NULL,
+  `supplierphone` varchar(255) DEFAULT NULL,
+  `supplierfax` varchar(255) DEFAULT NULL,
+  `suppliermail` varchar(255) DEFAULT NULL COMMENT 'email',
+  `supplierzipcode` varchar(255) DEFAULT NULL COMMENT '邮政编码',
+  `supplierbankaccount` varchar(255) DEFAULT NULL COMMENT '银行账户',
+  `supplierequipcategory` varchar(255) DEFAULT NULL COMMENT '供应产品类别',
+  PRIMARY KEY (`supplierid`),
+  KEY `suppliername` (`suppliername`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of supplier
+-- ----------------------------
+INSERT INTO `supplier` VALUES ('001', '001供应商', '北京', '张小明', '5445451', null, '6664595', '23523', '110055', '3252351111111111111', '工具类');
+INSERT INTO `supplier` VALUES ('002', '002供应商', '黑龙江', '李小明', '6661235', null, '6661235', null, '150000', null, '器具类');
+INSERT INTO `supplier` VALUES ('003', '003供应商', '吉林', '王老五', '2155456', null, '2155456', null, '130000', null, '加工设备类');
+INSERT INTO `supplier` VALUES ('004', '004供应商', '北京', '赵老六', '2213546', null, '2213546', null, '100000', null, 'IT设备类');
+INSERT INTO `supplier` VALUES ('26f5d19b', '006供应商', '黑龙江', '张伟', '6667595', null, '', '', '', '', '器具类');
+
+
 -- ----------------------------
 -- Table structure for needs
 -- ----------------------------
@@ -164,34 +192,6 @@ CREATE TABLE `orders` (
 -- ----------------------------
 INSERT INTO `orders` VALUES ('111', '001供应商', '11', '2019-01-17 20:49:05', '2019-01-17 20:49:08', '111');
 
--- ----------------------------
--- Table structure for supplier
--- ----------------------------
-DROP TABLE IF EXISTS `supplier`;
-CREATE TABLE `supplier` (
-  `supplierid` varchar(30) NOT NULL,
-  `suppliername` varchar(255) DEFAULT NULL,
-  `supplieradd` varchar(255) DEFAULT NULL COMMENT '地址',
-  `suppliercontacter` varchar(255) DEFAULT NULL COMMENT '联系人',
-  `suppliertele` varchar(255) DEFAULT NULL,
-  `supplierphone` varchar(255) DEFAULT NULL,
-  `supplierfax` varchar(255) DEFAULT NULL,
-  `suppliermail` varchar(255) DEFAULT NULL COMMENT 'email',
-  `supplierzipcode` varchar(255) DEFAULT NULL COMMENT '邮政编码',
-  `supplierbankaccount` varchar(255) DEFAULT NULL COMMENT '银行账户',
-  `supplierequipcategory` varchar(255) DEFAULT NULL COMMENT '供应产品类别',
-  PRIMARY KEY (`supplierid`),
-  KEY `suppliername` (`suppliername`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of supplier
--- ----------------------------
-INSERT INTO `supplier` VALUES ('001', '001供应商', '北京', '张小明', '5445451', null, '6664595', '23523', '110055', '3252351111111111111', '工具类');
-INSERT INTO `supplier` VALUES ('002', '002供应商', '黑龙江', '李小明', '6661235', null, '6661235', null, '150000', null, '器具类');
-INSERT INTO `supplier` VALUES ('003', '003供应商', '吉林', '王老五', '2155456', null, '2155456', null, '130000', null, '加工设备类');
-INSERT INTO `supplier` VALUES ('004', '004供应商', '北京', '赵老六', '2213546', null, '2213546', null, '100000', null, 'IT设备类');
-INSERT INTO `supplier` VALUES ('26f5d19b', '006供应商', '黑龙江', '张伟', '6667595', null, '', '', '', '', '器具类');
 
 -- ----------------------------
 -- Table structure for users
