@@ -1,6 +1,7 @@
 package com.purchase.sevice.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 	@Override
 	public boolean addEquip(Equipment equipment) {
 		try {
+			equipment.setEquipid(UUID.randomUUID().toString().substring(0, 8));
 			equipMapper.insert(equipment);
 			return true;
 		} catch (Exception e) {
