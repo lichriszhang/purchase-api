@@ -1,6 +1,7 @@
 package com.purchase.sevice.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class SupplierServiceImpl implements SupplierService {
 	@Override
 	public boolean addSupplier(Supplier supplier) {
 		try {
+			supplier.setSupplierid(UUID.randomUUID().toString().substring(0, 8));
 			supplierMapper.insert(supplier);
 			return true;
 		} catch (Exception e) {
